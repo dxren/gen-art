@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useAuth, useUser } from "@clerk/clerk-react";
 import { createNewArt } from "../artService";
 import { Link } from "react-router-dom";
@@ -29,7 +29,7 @@ export function ArtBuilder() {
 
     const { user } = useUser();
 
-    const handleColorChange = async (event) => {
+    const handleColorChange = async (event: ChangeEvent<HTMLInputElement>) => {
         setBgColor(event.target.value)
     }
 

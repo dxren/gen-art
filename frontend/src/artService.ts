@@ -30,7 +30,7 @@ export async function getArt() {
     if (error instanceof z.ZodError) {
       console.error("Validation error:", error.errors);
     } else {
-      console.error("Fetch error:", error.message);
+      console.error("Fetch error:", error);
     }
   }
 }
@@ -60,10 +60,10 @@ export async function createNewArt(
     if (error instanceof z.ZodError) {
       console.error("Validation error:", error.errors);
     } else {
-      console.error("Fetch error:", error.message);
+      console.error("Fetch error:", error);
     }
   }
-  return { error: "something bad happened" };
+  throw new Error("failed to create new background color art");
 }
 
 export async function createVertexArt(
@@ -95,8 +95,8 @@ export async function createVertexArt(
     if (error instanceof z.ZodError) {
       console.error("Validation error:", error.errors);
     } else {
-      console.error("Fetch error:", error.message);
+      console.error("Fetch error:", error);
     }
   }
-  return { error: "something bad happened" };
+  throw new Error("failed to create vertex art");
 }
