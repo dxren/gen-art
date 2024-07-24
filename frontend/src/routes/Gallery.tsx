@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { z } from 'zod';
 import { VertexArtDrawer } from '../components/VertexArtBuilder';
 import { Link } from 'react-router-dom';
+import { SERVER_URL } from '../constants';
 
-const SERVER_URL = "http://localhost:3000";
 //zod is the way to get type guarantees from fetch requests
 const ArtSchema = z.object({
     id: z.string(),

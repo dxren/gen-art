@@ -35,7 +35,6 @@ export function ArtBuilder() {
 
     //creates a POST request to the server at serverurl/artfeed to save the new art being created
     const handleSave = async (bgColor: string) => {
-        const SERVER_URL = "http://localhost:3000"
         const token = await getToken();
 
         if (!token) {
@@ -45,6 +44,7 @@ export function ArtBuilder() {
 
         setArtState("loading");
         const newArt = await createNewArt(bgColor, token);
+        console.log("New Art saved as:", newArt);
         setArtState("published")
     }
 

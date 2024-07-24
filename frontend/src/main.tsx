@@ -12,7 +12,6 @@ import IndexPage from './routes'
 import SignInPage from './routes/sign-in'
 import SignUpPage from './routes/sign-up'
 import VertexBuilder from './routes/vtx-builder.tsx'
-import ButtonPage from './routes/button-page'
 import ArtBuilder from './routes/artbuilder.tsx'
 import Gallery from './routes/Gallery.tsx'
 
@@ -25,16 +24,9 @@ const router = createBrowserRouter([
       { path: "/sign-in/*", element: <SignInPage /> },
       { path: "/sign-up/*", element: <SignUpPage /> },
       { path: "/vtx-art-builder", element: <VertexBuilder /> },
-      // { path: "/button-page", element: <ButtonPage /> },
       { path: "/bg-art-builder", element: <ArtBuilder /> },
       { path: "/gallery", element: <Gallery /> },
-      // {
-      //   element: <DashboardLayout />,
-      //   path: "dashboard",
-      //   children: [
-      //     { path: "/dashboard", element: <ArtFeedPage /> },
-      //   ]
-      // }
+
     ]
   }
 ])
