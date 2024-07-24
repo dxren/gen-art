@@ -38,7 +38,7 @@ export default function SignUpPage() {
         (async () => {
             if (user && isLoaded) {
                 await createUserInDatabase(); //call function to create a user in the database
-                window.location = "/"
+                window.location.href = "/"
             }
 
         })()
