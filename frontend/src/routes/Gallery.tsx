@@ -41,35 +41,46 @@ type VertexArt = {
 type Feed = (BGArt | VertexArt)[]
 
 export default function Gallery() {
-    const { pagenumber } = useParams();
+    // const { pagenumber } = useParams();
+    const [currentPageNumber, setCurrentPageNumber] = useState(1)
     //Art[] is a typescript annotation saying that artPieces is an array of objects
     //conforming to the Art type, as inferred from the ArtSchema as defined using zod
 
     //this state is created to store the fetched art pieces 
     const [artPieces, setArtPieces] = useState<Feed>([]);
     //this state is to track if the data is still being fetched
-
-
+    const [totalPageCount, setTotalPageCount] = useState(1)
+    const [refreshArt, setRefreshArt] = useState(0);
 
     useEffect(() => {
-        //fetch immediately on mount
-        fetchArt();
-        //set up interval for fetching every 5 seconds
-        //setinterval is a JS function that takes a function and a time in milliseconds
-        const interval = setInterval(fetchArt, 5000);
-        //clearinterval is a JS function that takes an interval and clears it
-        return () => clearInterval(interval);
+        fetchArt(currentPageNumber);
+        setInterval(() => setRefreshArt(refreshArt + 1), 5000);
     }, [])
 
+    useEffect(() => {
+        console.log('x')
+        fetchArt(currentPageNumber);
+    }, [refreshArt])
 
-    const fetchArt = async () => {
+    const clamp = (actualPageNumber: number, minPageNumber: number, maxPageNumber: number): number => {
+        if (actualPageNumber > maxPageNumber) {
+            return maxPageNumber
+        } else if (actualPageNumber < minPageNumber) {
+            return minPageNumber
+        } else {
+            return actualPageNumber
+        }
+    }
+
+    const fetchArt = async (pageNumber: number) => {
         try {
             //fetch the GET from localhost:3000/artfeed
-            const cleanPageNumber = pagenumber || 1
-            const response = await fetch(SERVER_URL + `/artfeed/${cleanPageNumber}`);
-            const fetchedArt = await response.json() as Feed;
+            // const cleanPageNumber = pagenumber || 1
+            const response = await fetch(SERVER_URL + `/artfeed/${pageNumber}`);
+            const fetchedArt = await response.json() as { feed: Feed, totalPages: number };
             console.log(fetchedArt)
-            setArtPieces(fetchedArt);
+            setArtPieces(fetchedArt.feed);
+            setTotalPageCount(fetchedArt.totalPages)
         }
         catch (error) {
             console.error('Error fetching art pieces:', error);
@@ -105,7 +116,32 @@ export default function Gallery() {
                         }
                     })}
                 </div>
-                <div style={{ marginTop: '40px', marginBottom: '30px' }}>
+                <div style={{ marginTop: '40px', marginBottom: '30px', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px' }}>
+                    <button
+                        disabled={currentPageNumber === 1}
+                        onClick={
+                            () => {
+                                const newPageNumber = clamp(currentPageNumber - 1, 1, totalPageCount)
+                                console.log(newPageNumber);
+                                setCurrentPageNumber(newPageNumber)
+                                fetchArt(newPageNumber)
+                            }
+                        }>
+                        Previous
+                    </button>
+                    <div>Page {currentPageNumber}</div>
+                    <button
+                        disabled={currentPageNumber === totalPageCount}
+                        onClick={() => {
+                            const newPageNumber = clamp(currentPageNumber + 1, 1, totalPageCount)
+                            setCurrentPageNumber(newPageNumber)
+                            fetchArt(newPageNumber)
+                        }
+                        }>
+                        Next
+                    </button>
+                </div>
+                <div style={{ textAlign: 'center', marginTop: '20px', paddingBottom: '20px' }}>
                     <Link to="/">Return to home</Link>
                 </div>
             </div>
