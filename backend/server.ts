@@ -38,10 +38,20 @@ app.use(optionalUser);
 //     next()
 // }
 
+async function totalPages(): Promise<number> {
+  const allArt = await prisma.art.count();
+  const totalPages = Math.ceil(allArt / 9);
+  console.log(totalPages);
+  return totalPages;
+}
+
 async function getArt(page: number) {
   const skip = (page - 1) * 9;
   const take = 9;
   const art = await prisma.art.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
     skip: skip,
     take: take,
   });
@@ -52,7 +62,7 @@ app.get("/artfeed", async (req, res) => {
   const page = 1;
   try {
     const feed = await getArt(page);
-    res.json(feed);
+    res.json({ feed, totalPages: await totalPages() });
   } catch (error) {
     console.error("Error fetching art feed", error);
     res
@@ -68,7 +78,7 @@ app.get("/artfeed/:pagenumber", async (req, res) => {
   // Dorothy says: params
   try {
     const feed = await getArt(page);
-    res.json(feed);
+    res.json({ feed, totalPages: await totalPages() });
   } catch (error) {
     console.error("Error fetching art feed", error);
     res
