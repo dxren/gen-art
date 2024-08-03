@@ -80,7 +80,7 @@ export default function Gallery() {
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh', width: '100vw', backgroundColor: "#FFFFFF", backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative', opacity: 0.8 }}>
             <div style={{ padding: '0 20px', marginTop: '60px', minHeight: '100vh', width: '100%' }}>
                 <h2>Art Gallery</h2>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '70px', marginRight: '20px', marginLeft: '20px' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginTop: '70px', marginRight: '20px', marginLeft: '20px', justifyContent: 'center' }}>
                     {artPieces.map((art) => {
                         if (art.type === "BG") {
                             return <div key={art.id} style={{
