@@ -97,7 +97,10 @@ export function ArtBuilder() {
                     Your art has been successfully published!
                 </div>
                 <div style={{ marginTop: '20px', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                    <button onClick={() => window.location.reload()} style={{ padding: '10px', border: '1px solid green', backgroundColor: 'white', color: 'green', cursor: 'pointer' }}>
+                    <button onClick={() => {
+                        setArtState("draft")
+                        setBgColor("#FFFFFF")
+                    }} style={{ padding: '10px', border: '1px solid green', backgroundColor: 'white', color: 'green', cursor: 'pointer' }}>
                         Create Another Art
                     </button>
                 </div>
