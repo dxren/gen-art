@@ -103,7 +103,7 @@ const CustomGraph: React.FC = () => {
                 <div>
                     <div style={{ marginBottom: '20px', fontSize: '1rem' }}>
                         <label>
-                            Vertices (must be even and ≥ 4):
+                            <b>Vertices (must be even and ≥ 4):</b>
                             <input
                                 type="number"
                                 min={4}
@@ -121,7 +121,7 @@ const CustomGraph: React.FC = () => {
                     </div>
                     <div style={{ marginBottom: '20px', fontSize: '1rem' }}>
                         <label>
-                            Line Color:
+                            <b>Line Color:</b>
                             <input
                                 type="color"
                                 value={lineColor}
@@ -130,7 +130,7 @@ const CustomGraph: React.FC = () => {
                             />
                         </label>
                         <label style={{ marginLeft: '20px' }}>
-                            Node Color:
+                            <b>Node Color:</b>
                             <input
                                 type="color"
                                 value={nodeColor}
@@ -230,7 +230,7 @@ type GraphProps = VertexArtDrawerProps
 
 export function VertexArtDrawer(props: VertexArtDrawerProps) {
     return (
-        <div style={{ width: '375px', height: '375px', border: '1px solid black' }}>
+        <div style={{ width: '375px', height: '375px', border: '1px solid black', backgroundColor: "#FFFFFF" }}>
             <Canvas camera={{ position: [0, 0, 20] }}>
                 <ambientLight intensity={0.5} />
                 <pointLight position={[10, 10, 10]} />

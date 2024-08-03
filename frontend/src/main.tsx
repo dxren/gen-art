@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       { path: "/vtx-art-builder", element: <VertexBuilder /> },
       { path: "/bg-art-builder", element: <ArtBuilder /> },
       { path: "/gallery", element: <Gallery /> },
-
+      { path: "/gallery/:pagenumber", element: <Gallery /> }
     ]
   }
 ])

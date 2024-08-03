@@ -39,17 +39,17 @@ export default function IndexPage() {
     // }
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100vw' }}>
-            <div style={{ textAlign: 'center' }}>
-                <h2>Generative Art Library</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100vw', backgroundImage: 'url("/index.jpeg")', backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative', opacity: 0.8 }}>
+            <div style={{ textAlign: 'center', backgroundColor: 'rgba(5, 5, 5, 0.8)', padding: '20px', borderRadius: "10px" }}>
+                <h2 style={{ color: 'white' }}>Generative Art Library</h2>
                 <div>
                     <ul style={{ listStyleType: 'none', padding: 0 }}>
                         {!isSignedIn && <li><Link to="/sign-up">Sign Up</Link></li>}
                         {!isSignedIn && <li><Link to="/sign-in">Sign In</Link></li>}
-                        {isSignedIn && <li><Link to="/vtx-art-builder">Vertex Art Builder</Link></li>}
+                        {isSignedIn && <li><Link to="/vtx-art-builder" style={{ color: '#D8BFD8' }}>Vertex Art Builder</Link></li>}
                         {/* {isSignedIn && <li><Link to="/button-page">Button Page</Link></li>} */}
-                        {isSignedIn && <li><Link to="/bg-art-builder">Background Art Builder</Link></li>}
-                        {isSignedIn && <li><Link to="/gallery">Art Gallery</Link></li>}
+                        {isSignedIn && <li><Link to="/bg-art-builder" style={{ color: '#D8BFD8' }}>Background Art Builder</Link></li>}
+                        {isSignedIn && <li><Link to="/gallery" style={{ color: '#D8BFD8' }}>Art Gallery</Link></li>}
                     </ul>
                 </div>
                 {/* <div>

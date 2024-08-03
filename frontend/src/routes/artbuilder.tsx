@@ -108,32 +108,35 @@ export function ArtBuilder() {
         );
     }
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', width: '100vw' }}>
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1 }}>
-                <div style={{ textAlign: 'center' }}>
-                    <h2>Select a color</h2>
-                    <input
-                        type="color"
-                        value={bgColor}
-                        onChange={handleColorChange}
-                        style={{ width: '50px', height: '50px', marginTop: '20px' }}
-                    />
-                    <div
-                        style={{
-                            backgroundColor: bgColor,
-                            width: '200px',
-                            height: '200px',
-                            border: '1px solid black',
-                            marginTop: '10px'
-                        }}
-                    />
-                    <button onClick={() => handleSave(bgColor)} style={{ marginTop: '20px' }}>
-                        Save Art
-                    </button>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100vw', backgroundColor: "#E4DBDC", backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative', opacity: 0.8 }}>
+
+            <div style={{ display: 'flex', flexDirection: 'column', height: '100vh', width: '100vw' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+                    <div style={{ textAlign: 'center' }}>
+                        <h2>Select a color</h2>
+                        <input
+                            type="color"
+                            value={bgColor}
+                            onChange={handleColorChange}
+                            style={{ width: '50px', height: '50px', marginTop: '20px' }}
+                        />
+                        <div
+                            style={{
+                                backgroundColor: bgColor,
+                                width: '200px',
+                                height: '200px',
+                                border: '1px solid black',
+                                marginTop: '10px'
+                            }}
+                        />
+                        <button onClick={() => handleSave(bgColor)} style={{ marginTop: '20px' }}>
+                            Save Art
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div style={{ marginTop: 'auto', marginBottom: '40px', textAlign: 'center' }}>
-                <Link to="/">Return to home</Link>
+                <div style={{ marginTop: 'auto', marginBottom: '40px', textAlign: 'center' }}>
+                    <Link to="/">Return to home</Link>
+                </div>
             </div>
         </div>
     )

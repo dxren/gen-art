@@ -11,11 +11,13 @@ function VertexBuilder() {
 
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh' }}>
-            <VertexArtBuilder
-            />
-            <div style={{ marginBottom: '50px' }}>
-                <Link to="/">Return to home</Link>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100vw', backgroundColor: "#E4DBDC", backgroundSize: 'cover', backgroundPosition: 'center', position: 'relative', opacity: 0.8 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh' }}>
+                <VertexArtBuilder
+                />
+                <div style={{ marginBottom: '50px' }}>
+                    <Link to="/">Return to home</Link>
+                </div>
             </div>
         </div>
     );
